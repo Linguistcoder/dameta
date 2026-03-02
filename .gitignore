@@ -1,0 +1,35 @@
+# Ignore data files (raw and processed)
+/data/
+**/data/**
+
+# Ignore experiment results, checkpoints, logs, and derived artifacts
+/results/
+**/results/**
+/plots/
+dameta_poster/
+
+# Ignore derived CSVs and JSON analysis files
+multiple_choice_metaphors_*.csv
+*.json
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+.env/
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE / editor settings
+.vscode/
+.idea/
+*.swp
+
+# OS-specific junk
+.DS_Store
+Thumbs.db

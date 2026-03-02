@@ -1,0 +1,61 @@
+# Experiment configuration
+experiment:
+  name: "Danish Metaphor Benchmark v4"
+  output_dir: "results"
+  random_seed: 42
+
+# Model configurations
+models:
+# Ollama models (locally run)
+  - llama3.1
+  - gemma2
+  - mistral
+  - qwen2.5
+  - phi4
+# OpenRouter models (remotely run)
+  - openrouter/openai/gpt-4o-mini
+  - openrouter/anthropic/claude-3.5-sonnet
+
+# Prompt templates
+prompts:
+  met_v1:
+    # No mention of metaphors - neutral language understanding task
+    template: |
+      Læs følgende sætning: "{sentence}"
+      
+      Hvad betyder ordet "{lemma}" i denne sammenhæng?
+      
+      a. {exp1}
+      b. {exp2}
+      c. {exp3}
+      d. {exp4}
+      e. Ved ikke
+      
+      VIGTIGT: Du får +1 point for det rigtige svar, -1 point for et forkert svar, og 0 point for "ved ikke". Vælg kun "ved ikke" hvis du er usikker.
+      
+      Svar kun med ét bogstav: a, b, c, d eller e
+    response_type: "single_choice"
+    
+  met_v2:
+    # Explicit mention of metaphor analysis
+    template: |
+      I følgende sætning bruges ordet "{lemma}" metaforisk: "{sentence}"
+      
+      Hvilken fortolkning beskriver bedst den metaforiske betydning af "{lemma}"?
+      
+      a. {exp1}
+      b. {exp2}
+      c. {exp3}
+      d. {exp4}
+      e. Ved ikke
+      
+      VIGTIGT: Du får +1 point for det rigtige svar, -1 point for et forkert svar, og 0 point for "ved ikke". Vælg kun "ved ikke" hvis du er usikker.
+      
+      Svar kun med ét bogstav: a, b, c, d eller e
+    response_type: "single_choice"
+
+# Data configuration - v4 aggregated dataset
+datasets:
+  - name: "combined_v4"
+    file_path: "data/v4/combined_v4.tsv"
+    shuffle_explanations: true
