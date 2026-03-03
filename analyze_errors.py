@@ -643,9 +643,9 @@ class ErrorAnalyzer:
         fig, ax = plt.subplots(figsize=(10, 6))
 
         # Color gradient based on accuracy
-        colors = plt.cm.Set2(np.linspace(0, 1, len(topics)))
+        colors = plt.cm.Set3(np.linspace(0.2, 1, len(topics)))
 
-        bars = ax.bar(topics, accuracies, color=colors, alpha=0.8)  # , edgecolor='black', linewidth=1.5)
+        bars = ax.bar(topics, accuracies, color=colors, alpha=1)  # , edgecolor='black', linewidth=1.5)
 
         # Add value and count labels
         for bar, acc, count in zip(bars, accuracies, counts):
